@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="###第一篇文章,好紧张啊!   想写点SpringMVC的入门">
+<meta name="description" content="第一篇文章,好紧张啊!   想写点SpringMVC的入门   SpringMVC 是一个表现层框架,是Spring框架的一部分 SpringMVC框架流程:  1.客户端发送请求到 前端控制器; 2.前端控制器 接收请求后调用 处理器映射器 查询Handler. 3.处理器映射器 返回处理器执行链. 4.前端控制器向 处理器适配器 请求执行Handler 5.处理器适配器 执行 Handler">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你好,Hexo">
 <meta property="og:url" content="http://yoursite.com/2018/03/14/你好-Hexo/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="###第一篇文章,好紧张啊!   想写点SpringMVC的入门">
-<meta property="og:updated_time" content="2018-03-14T02:37:47.586Z">
+<meta property="og:description" content="第一篇文章,好紧张啊!   想写点SpringMVC的入门   SpringMVC 是一个表现层框架,是Spring框架的一部分 SpringMVC框架流程:  1.客户端发送请求到 前端控制器; 2.前端控制器 接收请求后调用 处理器映射器 查询Handler. 3.处理器映射器 返回处理器执行链. 4.前端控制器向 处理器适配器 请求执行Handler 5.处理器适配器 执行 Handler">
+<meta property="og:updated_time" content="2018-03-16T10:56:54.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你好,Hexo">
-<meta name="twitter:description" content="###第一篇文章,好紧张啊!   想写点SpringMVC的入门">
+<meta name="twitter:description" content="第一篇文章,好紧张啊!   想写点SpringMVC的入门   SpringMVC 是一个表现层框架,是Spring框架的一部分 SpringMVC框架流程:  1.客户端发送请求到 前端控制器; 2.前端控制器 接收请求后调用 处理器映射器 查询Handler. 3.处理器映射器 返回处理器执行链. 4.前端控制器向 处理器适配器 请求执行Handler 5.处理器适配器 执行 Handler">
 
 
 
@@ -298,13 +298,51 @@
       
 
       
-        <p>###第一篇文章,好紧张啊!</p>
+        <p>第一篇文章,好紧张啊!</p>
 <blockquote>
 <p> 想写点SpringMVC的入门</p>
 </blockquote>
 <blockquote>
+<p>SpringMVC 是一个表现层框架,是Spring框架的一部分</p>
+<p>SpringMVC框架流程:</p>
 </blockquote>
+<pre><code>1.客户端发送请求到 前端控制器;
+2.前端控制器 接收请求后调用 处理器映射器 查询Handler.
+3.处理器映射器 返回处理器执行链.
+4.前端控制器向 处理器适配器 请求执行Handler
+5.处理器适配器 执行 Handler 并返回ModleAndView
+6.前端控制器向 视图解析器 请求解析视图
+7.视图解析器返回view
+8.前端控制器渲染视图并返回给客户端.
+</code></pre><blockquote>
+<p>组件说明:</p>
+</blockquote>
+<pre><code>1.前端控制器:DispatcherServlet ,会拦截客户端的请求,是SpringMVC的入口.需要在web.xml中配置该Servlet,同时配置拦截路径,拦截所有请求用的是&quot;/&quot;,而不是&quot;/*&quot;,同时还要配置SpringMVC.xml配置文件.
+2.处理器映射器:HandlerMapping ,可以根据不同的URL找到相对应的Handler,可以有不同的配置方式:配置文件,实现接口,注解,一般用注解的方式.
+3.处理器适配器: HandlerAdapter ,执行不同的Handler.
+    注意点:默认的处理器映射器和处理器适配器已经过时,可以在SpringMVC.xml中用&lt;mvc:annnotation-driven /&gt; 代替.
+4.视图解析器: InternalResourceViewResolver,支持jsp是解析,可以在配置文件中配置该bean,同时配置前缀(prefix)和后缀(suffix).
+5.Handler和View要自己书写.
+</code></pre><blockquote>
+<p>Handler的编写:</p>
+</blockquote>
+<pre><code>1.编写一个类,打上@Controller注解(前提是在配置文件中开启注解扫描);
+2.编写方法,打上@RequestMapping(&quot;xxx&quot;)注解,里面的值对应不同的请求路径;
+    方法的返回值有三种:
+        a.返回ModelAndView对象,在方法中new出来,添加数据和指定view(底层是将数据设置到request域中): 添加数据:addObject(&quot;xxx&quot;,xxx);指定视图:setViewName(&quot;xxx&quot;);
+        b.返回void,一般在异步请求时使用.
+        c.返回String字符串:1.视图的名称;2.重定向;3.请求转发.
 
+    方法的参数:
+        1.默认支持的参数类型有:
+            HttpServletRequest
+            HttpServletResponse
+            HttpSession
+            Model/ModelMap:后面是前面的实现,用这两种做参数就不需要返回ModelAndView对象了,直接用model.addAttribute(&quot;xxx&quot;,xxx)设置参数,然后返回视图的字符串就行.
+        2.简单类型接收参数:...
+        3.使用pojo接收参数:...
+        4.复杂参数的接收:...
+</code></pre>
       
     </div>
     
