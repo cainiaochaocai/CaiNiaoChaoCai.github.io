@@ -228,6 +228,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/17/lucene简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="can">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/17/lucene简介/" itemprop="url">lucene简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-17T09:38:58+08:00">
+                2018-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在介绍Lucene之前要先介绍下数分类:</p>
+</blockquote>
+<pre><code>结构化数据:有固定长度,有固定格式的数据,如数据库,元数据等;
+非结构化数据:无固定长度,无固定格式的数据,如邮件,文档等.
+</code></pre><blockquote>
+<p>结构化数据的查询就不介绍了,非结构化数据的查询有两种方式:</p>
+</blockquote>
+<pre><code>1.顺序扫描:将文件内容逐行扫描,从头到尾,效率很低;
+2.全文检索:将非结构化数据的一部分提取出来,从新组织,使其变得有一定结构,然后对此进行检索,从而达到快速
+ 搜索的目的.这种先建立索引,然后再对索引进行搜索的过程称为全文检索.
+</code></pre><blockquote>
+<p>索引的过程:</p>
+</blockquote>
+<pre><code>1.获得原始文档:指要索引的和搜索的内容,如文件,网页,数据等;
+2.创建文档对象:将原始内容创建为文档(document),文档中包含多个域(field),域中存储值.如果原始文件
+ 是一个文档,就可以有文件名Filed,文件大小File的,文件路径Field,文件内容Field等.一个document可以
+ 有多个域,不同的document可以有不同的域,也可以有相同的域,每个文档有唯一的ID;
+3.文档分析:对域中的内容进行 分析,分析过程是对内容进行分割,提取单词,转换大小写等操作,最后生成词汇
+ 单元,每个词汇单元叫一个term,term由两部分组成:域名和内容.
+4.创建索引:对词汇单元索引,可以通过词汇找到文档,这种方式叫做倒排索引,也叫作反向索引,索引库包含索引
+ 和文档两部分.
+</code></pre><blockquote>
+<p>搜索的过程:输入关键字,从索引中进行搜索,根据索引对应的文档ID,从而找到内容.</p>
+</blockquote>
+<pre><code>1.    创建接口:如Lucene提供给用户搜索的和提交关键字,显示结果.
+2.    创建查询:查询独享包含要搜索的Field和关键字,如:&quot;fileName:Lucene&quot;,表示要搜索fileName域中内
+ 容包含Lucene的文档.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/你好-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -552,7 +699,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
